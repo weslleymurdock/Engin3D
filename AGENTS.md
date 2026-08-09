@@ -85,6 +85,17 @@ Use abstractions in Application and implementations in Infrastructure unless an 
 
 Each Web API project has a root DI composition file exposing `WebApplicationBuilder` extensions for service registration and `WebApplication` extensions for HTTP pipeline configuration/execution. Keep `Program.cs` declarative and minimal.
 
+## Localization
+
+- All Web APIs must use an `ILocalizer` abstraction for user-facing and API response localization rather than directly depending on `IStringLocalizer` throughout application code.
+- `ILocalizer` must remain a small application-facing abstraction whose localization key is resolved through the localization infrastructure; it must not expose framework-specific resource-factory concerns to Domain or Application business logic.
+- The concrete `Localizer` implementation belongs to the appropriate infrastructure/composition layer, injects `IStringLocalizerFactory`, and creates/resolves the `IStringLocalizer` associated with the current Web API project/resource set.
+- Each Web API project must have its own localization resource scope. Do not share a concrete `IStringLocalizer` instance between unrelated Web API projects merely for convenience.
+- Register localization and the concrete `ILocalizer` through the service's DI composition extensions. Keep controllers/endpoints and application handlers dependent on `ILocalizer`, not on `IStringLocalizerFactory`.
+- Localization resources for the MAUI application belong under the MAUI `Resources` hierarchy and must initially support `pt-BR` and `en-US`.
+- `pt-BR` is the default culture for the MAUI application. Repository source comments, issue text, PR text, logs, technical documentation, and other developer-facing artifacts remain en-US.
+- Do not hard-code user-facing strings when they belong to a localizable UI or API response. Resource keys must be stable and feature-oriented.
+
 ## Graphics architecture
 
 Use two independent Strategy families:
@@ -110,7 +121,7 @@ Never make a concrete importer depend on a concrete graphics backend.
 ## MAUI
 
 - Keep `MauiProgram.cs` declarative. Prefer `MauiAppBuilderExtensions` methods that compose client setup and return the builder/app as appropriate.
-- Register State, Application, Infrastructure, HTTP clients, graphics backend, asset importers, and UI services through DI.
+- Register State, Application, Infrastructure, HTTP clients, graphics backend, asset importers, localization, and UI services through DI.
 - Do not instantiate services manually in Views/ViewModels when DI is appropriate.
 - Keep Presentation responsible for presentation and user interaction, not persistence or concrete renderer implementation details.
 - Prefer lifecycle-aware disposal for GPU resources, streams, subscriptions, timers, and other disposable resources.
@@ -123,7 +134,7 @@ Never make a concrete importer depend on a concrete graphics backend.
 
 `Engin3DAuth` is the authentication/JWKS authority. `Engin3DIdentity` owns user/profile management but must implement the registration, confirmation, authentication, and related flow manually rather than relying on ASP.NET Identity API endpoint opaque tokens. Microservices validate access tokens using JWKS.
 
-`EngineStorage` owns asset persistence in MongoDB GridFS. `Engin3DMetadata` owns SQL Server project/asset metadata. RabbitMQ is for asynchronous integration events where eventual consistency is justified; do not introduce messaging merely to replace a simple synchronous request.
+`Engin3DStorage` owns asset persistence in MongoDB GridFS. `Engin3DMetadata` owns SQL Server project/asset metadata. RabbitMQ is for asynchronous integration events where eventual consistency is justified; do not introduce messaging merely to replace a simple synchronous request.
 
 ## Project generation
 
@@ -153,6 +164,6 @@ The future `Engin3DProject` service consumes persisted project/scene/assets and 
 
 ## Documentation and language
 
-- Source comments, XML documentation, logs, and developer-facing technical documentation should use en-US unless the existing file clearly establishes another convention.
+- Source comments, XML documentation, logs, issue text, PR text, and developer-facing technical documentation must use en-US.
 - Keep documentation aligned with implemented behavior.
 - Do not document planned behavior as implemented behavior.
