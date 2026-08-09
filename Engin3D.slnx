@@ -1,0 +1,22 @@
+<Solution>
+  <Folder Name="/src/" />
+  <Folder Name="/src/client/">
+    <Project Path="src/client/Engin3D/Engin3D.csproj">
+      <Deploy />
+    </Project>
+    <Project Path="src/client/Engin3DInteractionState/Engin3DInteractionState.csproj" />
+    <Project Path="src/client/Engin3DProjectState/Engin3DProjectState.csproj" />
+    <Project Path="src/client/Engin3DViewportState/Engin3DViewportState.csproj" />
+  </Folder>
+  <Folder Name="/src/server/">
+    <Project Path="src/server/Engin3D.github.io/Engin3D.github.io.csproj" />
+    <Project Path="src/server/Engin3DAuth/Engin3DAuth.csproj" Id="d4c7a5c2-b8ae-4b01-a7c9-23024f247fa7" />
+    <Project Path="src/server/Engin3DGateway/Engin3DGateway.csproj" Id="3180dc09-3184-4dfd-b3a0-6d048743bf47" />
+    <Project Path="src/server/Engin3DIdentity/Engin3DIdentity.csproj" Id="f712b720-f23e-4ff0-ba5f-42690a66eec1" />
+    <Project Path="src/server/Engin3DMetadata/Engin3DMetadata.csproj" Id="4c219bc2-b632-47fe-83bc-3077af7d4272" />
+    <Project Path="src/server/Engin3DStorage/Engin3DStorage.csproj" Id="10a841f1-3451-4aaf-aad1-48ac164361b9" />
+  </Folder>
+  <Project Path="docker-compose.dcproj">
+    <Build />
+  </Project>
+</Solution>

@@ -1,0 +1,6 @@
+@Engin3DGateway_HostAddress = http://localhost:5234
+
+GET {{Engin3DGateway_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,15 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "engin3dauth": "StartDebugging",
+        "engin3dgateway": "StartDebugging",
+        "engin3didentity": "StartDebugging",
+        "engin3dmetadata": "StartDebugging",
+        "engin3dstorage": "StartDebugging"
+      }
+    }
+  }
+}

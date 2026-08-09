@@ -1,0 +1,34 @@
+services:
+  engin3dauth:
+    image: ${DOCKER_REGISTRY-}engin3dauth
+    build:
+      context: .
+      dockerfile: src/server/Engin3DAuth/Dockerfile
+
+  engin3dgateway:
+    image: ${DOCKER_REGISTRY-}engin3dgateway
+    build:
+      context: .
+      dockerfile: src/server/Engin3DGateway/Dockerfile
+
+
+  engin3didentity:
+    image: ${DOCKER_REGISTRY-}engin3didentity
+    build:
+      context: .
+      dockerfile: src/server/Engin3DIdentity/Dockerfile
+
+
+  engin3dmetadata:
+    image: ${DOCKER_REGISTRY-}engin3dmetadata
+    build:
+      context: .
+      dockerfile: src/server/Engin3DMetadata/Dockerfile
+
+
+  engin3dstorage:
+    image: ${DOCKER_REGISTRY-}engin3dstorage
+    build:
+      context: .
+      dockerfile: src/server/Engin3DStorage/Dockerfile
+
