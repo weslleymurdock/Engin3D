@@ -1,7 +1,7 @@
 name: 🧩 Task
 description: An task (of many) from a feature.
 title: "🧩 [TASK]: "
-labels: [enhancement]
+labels: [enhancement, task]
 body:
 
   - type: markdown

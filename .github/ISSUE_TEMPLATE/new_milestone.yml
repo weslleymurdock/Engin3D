@@ -1,7 +1,7 @@
 name: Ⓜ️ New Milestone
 description: Creates an issue to aggregate all features for a current milestone (each feature with its respective task issues).
 title: "Ⓜ️ [MILESTONE]: "
-labels: [enhancement]
+labels: [enhancement, milestone]
 body:
   - type: input
     id: start-date
