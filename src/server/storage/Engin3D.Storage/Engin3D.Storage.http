@@ -1,0 +1,6 @@
+@Engin3D.Storage_HostAddress = http://localhost:5073
+
+GET {{Engin3D.Storage_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

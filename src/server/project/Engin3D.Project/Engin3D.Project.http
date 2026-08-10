@@ -1,0 +1,6 @@
+@Engin3D.Project_HostAddress = http://localhost:5172
+
+GET {{Engin3D.Project_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

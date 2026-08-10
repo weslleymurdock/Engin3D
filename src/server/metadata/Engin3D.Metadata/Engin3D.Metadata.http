@@ -1,0 +1,6 @@
+@Engin3D.Metadata_HostAddress = http://localhost:5077
+
+GET {{Engin3D.Metadata_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

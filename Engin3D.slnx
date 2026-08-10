@@ -1,20 +1,56 @@
 <Solution>
   <Folder Name="/src/" />
   <Folder Name="/src/client/">
+    <Project Path="src/client/Engin3D.Application/Engin3D.Application.csproj" />
+    <Project Path="src/client/Engin3D.Composition/Engin3D.Composition.csproj" />
+    <Project Path="src/client/Engin3D.Domain/Engin3D.Domain.csproj" />
+    <Project Path="src/client/Engin3D.Infrastructure/Engin3D.Infrastructure.csproj" />
     <Project Path="src/client/Engin3D/Engin3D.csproj">
       <Deploy />
     </Project>
-    <Project Path="src/client/Engin3DInteractionState/Engin3DInteractionState.csproj" />
-    <Project Path="src/client/Engin3DProjectState/Engin3DProjectState.csproj" />
-    <Project Path="src/client/Engin3DViewportState/Engin3DViewportState.csproj" />
   </Folder>
-  <Folder Name="/src/server/">
-    <Project Path="src/server/Engin3D.github.io/Engin3D.github.io.csproj" />
-    <Project Path="src/server/Engin3DAuth/Engin3DAuth.csproj" Id="d4c7a5c2-b8ae-4b01-a7c9-23024f247fa7" />
-    <Project Path="src/server/Engin3DGateway/Engin3DGateway.csproj" Id="3180dc09-3184-4dfd-b3a0-6d048743bf47" />
-    <Project Path="src/server/Engin3DIdentity/Engin3DIdentity.csproj" Id="f712b720-f23e-4ff0-ba5f-42690a66eec1" />
-    <Project Path="src/server/Engin3DMetadata/Engin3DMetadata.csproj" Id="4c219bc2-b632-47fe-83bc-3077af7d4272" />
-    <Project Path="src/server/Engin3DStorage/Engin3DStorage.csproj" Id="10a841f1-3451-4aaf-aad1-48ac164361b9" />
+  <Folder Name="/src/server/" />
+ 
+  <Folder Name="/src/server/auth/"> 
+    <Project Path="src/server/auth/Engin3D.Auth/Engin3D.Auth.csproj" />
+    <Project Path="src/server/auth/Engin3D.Auth.Application/Engin3D.Auth.Application.csproj" />
+    <Project Path="src/server/auth/Engin3D.Auth.Composition/Engin3D.Auth.Composition.csproj" />
+    <Project Path="src/server/auth/Engin3D.Auth.Domain/Engin3D.Auth.Domain.csproj" />
+    <Project Path="src/server/auth/Engin3D.Auth.Infrastructure/Engin3D.Auth.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/src/server/docs/">
+    <Project Path="src/server/docs/Engin3D.github.io/Engin3D.github.io.csproj" />
+  </Folder>
+  <Folder Name="/src/server/gateway/"> 
+    <Project Path="src/server/gateway/Engin3D.Gateway/Engin3D.Gateway.csproj" />
+  </Folder>
+  <Folder Name="/src/server/identity/">
+    <Project Path="src/server/identity/Engin3D.Identity/Engin3D.Identity.csproj" />
+    <Project Path="src/server/identity/Engin3D.Identity.Application/Engin3D.Identity.Application.csproj" />
+    <Project Path="src/server/identity/Engin3D.Identity.Composition/Engin3D.Identity.Composition.csproj" />
+    <Project Path="src/server/identity/Engin3D.Identity.Domain/Engin3D.Identity.Domain.csproj" />
+    <Project Path="src/server/identity/Engin3D.Identity.Infrastructure/Engin3D.Identity.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/src/server/metadata/">
+    <Project Path="src/server/metadata/Engin3D.Metadata/Engin3D.Metadata.csproj" />
+    <Project Path="src/server/metadata/Engin3D.Metadata.Application/Engin3D.Metadata.Application.csproj" />
+    <Project Path="src/server/metadata/Engin3D.Metadata.Composition/Engin3D.Metadata.Composition.csproj" />
+    <Project Path="src/server/metadata/Engin3D.Metadata.Domain/Engin3D.Metadata.Domain.csproj" />
+    <Project Path="src/server/metadata/Engin3D.Metadata.Infrastructure/Engin3D.Metadata.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/src/server/project/">
+    <Project Path="src/server/project/Engin3D.Project/Engin3D.Project.csproj" />
+    <Project Path="src/server/project/Engin3D.Project.Application/Engin3D.Project.Application.csproj" />
+    <Project Path="src/server/project/Engin3D.Project.Composition/Engin3D.Project.Composition.csproj" />
+    <Project Path="src/server/project/Engin3D.Project.Domain/Engin3D.Project.Domain.csproj" />
+    <Project Path="src/server/project/Engin3D.Project.Infrastructure/Engin3D.Project.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/src/server/storage/">
+    <Project Path="src/server/storage/Engin3D.Storage/Engin3D.Storage.csproj" />
+    <Project Path="src/server/storage/Engin3D.Storage.Application/Engin3D.Storage.Application.csproj" />
+    <Project Path="src/server/storage/Engin3D.Storage.Composition/Engin3D.Storage.Composition.csproj" />
+    <Project Path="src/server/storage/Engin3D.Storage.Domain/Engin3D.Storage.Domain.csproj" />
+    <Project Path="src/server/storage/Engin3D.Storage.Infrastructure/Engin3D.Storage.Infrastructure.csproj" />
   </Folder>
   <Project Path="docker-compose.dcproj">
     <Build />
