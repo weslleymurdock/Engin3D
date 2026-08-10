@@ -1,49 +1,55 @@
 ---
 name: Engin3D Repository
-description: Instructions for git/github usage at Engin3D repository.
+description: Instructions for GitHub Issues, branches, commits, pull requests, milestones, tags, and releases in Engin3D.
 applyTo: "./**/*"
 ---
 
-# Engin3D
+# Engin3D GitHub Workflow
 
-This git repository is a kind of .NET monorepo based organization for the client and server .net projects.
+Engin3D uses GitHub Issues, Milestones, Pull Requests, tags, and Releases as the implementation history.
 
-## Responsibilities
+## Work hierarchy
 
-Branches in this repo must:
+```text
+Milestone
+└── Feature
+    └── Task
+```
 
-- belong to a [TASK](./../ISSUE_TEMPLATE/task.yml) issue and reference that issue in the branch name.
+Every implementation branch must correspond to a Task and reference its issue in the branch name. Tasks belong to exactly one Feature. Features belong to exactly one Milestone.
 
-Issues in this repo must:
+Use the repository issue templates exactly. Do not create ad-hoc tracking issues. Feature and Milestone descriptions summarize their child Features; implementation detail belongs in Tasks.
 
-- have [TASK](./../ISSUE_TEMPLATE/task.yml) issues that belong to one [FEATURE](./../ISSUE_TEMPLATE/feature_request.yml) issue.
-- have each [FEATURE](./../ISSUE_TEMPLATE/feature_request.yml) issue linked to exactly one [MILESTONE](./../ISSUE_TEMPLATE/new_milestone.yml) issue.
-- have [MILESTONE](./../ISSUE_TEMPLATE/new_milestone.yml) issues that have no parents and belong to an active milestone approved for use in the repository project.
+## Labels
 
-Milestones in this repo must:
+Use only labels defined by the issue templates. Milestone issues use `enhancement` and `milestone`. Feature issues use `enhancement` and `feature`. Task issues use `task`. Do not add `feature` to Tasks or Milestones.
 
-- have only one related [MILESTONE](./../ISSUE_TEMPLATE/new_milestone.yml) issue / milestone.
-- must not have a finish date.
-- must release exactly one tag and exactly one release per milestone.
+## Branches
 
-Tags in this repo must:
+Create implementation branches from the current target branch and use a Task-oriented name, for example `task/123-description`. Never rewrite or force-push history unless explicitly requested.
 
-- have only tagged locally and push remotely by repository owner.
-- belongs to one milestone.
+## Commits
 
-Releases in this repo must:
+Commit messages use one of the repository prefixes: `feat:`, `fix:`, `docs:`, or `tests:`. Keep descriptions concise. Use `;` only when one intentional commit contains multiple related change entries. Prefer one reviewable commit for a prompt implementation unless the issue explicitly requires separate commits.
 
-- be done manually.
+## Pull Requests
 
-Commits in this repo must:
+Use the repository PR template exactly. Implementation PRs start as draft unless explicitly requested otherwise and must not be merged without explicit approval.
 
-1. start with one of these prefixes: `feat:`, `fix:`, `docs:`, or `tests:`.
-2. include a concise change description after the prefix, for example `docs: update readme` or `tests: implement mock`.
-3. use `;` to separate multiple change entries when one commit covers more than one change, for example `fix: removed mismatching property; docs: update readme`.
-4. use a single commit for prompt implementations so the diff is easier to review in the current open branch.
+Draft titles use the repository convention:
 
-PR's in this repo must:
+```text
+[DRAFT] [TASK|BUG|DOCS|SYNC] Title
+```
 
-- be assigned to repository owner;
-- open as draft, with the first prefix being `[DRAFT]` .
-- the title must have the prefix according to the change of the issue (after draft, to be the first when exits the draft state)
+When ready for review, remove `[DRAFT]` while preserving the change-type prefix. Assign implementation PRs to the repository owner when required by the repository workflow.
+
+## Milestones, tags, releases
+
+A milestone represents one releasable functional group. It must have no finish date and must contain the Features that comprise its scope. When complete, release exactly one immutable version tag and one GitHub Release for that milestone. Releases are created manually.
+
+Tags are created and pushed remotely by the repository owner according to repository policy.
+
+## Documentation
+
+Developer-facing source comments, issue text, PR text, logs, and technical documentation use en-US. Keep README and project documentation aligned with implemented behavior and do not describe planned behavior as already implemented.
