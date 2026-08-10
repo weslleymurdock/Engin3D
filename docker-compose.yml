@@ -3,32 +3,93 @@ services:
     image: ${DOCKER_REGISTRY-}engin3dauth
     build:
       context: .
-      dockerfile: src/server/Engin3DAuth/Dockerfile
+      dockerfile: src/server/auth/Engin3D.Auth/Dockerfile
 
   engin3dgateway:
     image: ${DOCKER_REGISTRY-}engin3dgateway
     build:
       context: .
-      dockerfile: src/server/Engin3DGateway/Dockerfile
-
+      dockerfile: src/server/gateway/Engin3D.Gateway/Dockerfile
 
   engin3didentity:
     image: ${DOCKER_REGISTRY-}engin3didentity
     build:
       context: .
-      dockerfile: src/server/Engin3DIdentity/Dockerfile
-
+      dockerfile: src/server/identity/Engin3D.Identity/Dockerfile
 
   engin3dmetadata:
     image: ${DOCKER_REGISTRY-}engin3dmetadata
     build:
       context: .
-      dockerfile: src/server/Engin3DMetadata/Dockerfile
+      dockerfile: src/server/Metadata/Engin3D.Metadata/Dockerfile
 
+  engin3dproject:
+    image: ${DOCKER_REGISTRY-}engin3dproject
+    build:
+      context: .
+      dockerfile: src/server/project/Engin3D.Project/Dockerfile
 
   engin3dstorage:
     image: ${DOCKER_REGISTRY-}engin3dstorage
     build:
       context: .
-      dockerfile: src/server/Engin3DStorage/Dockerfile
+      dockerfile: src/server/storage/Engin3D.Storage/Dockerfile
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    restart: unless-stopped
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P \"$${MSSQL_SA_PASSWORD}\" -C -Q \"SELECT 1\""
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+  mongodb:
+    image: mongo:8
+    restart: unless-stopped
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "mongosh",
+          "--eval",
+          "db.adminCommand('ping')"
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+  mqtt:
+    image: eclipse-mosquitto:2
+    restart: unless-stopped
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "mosquitto_sub -h localhost -p 1883 -t '$$SYS/broker/uptime' -C 1 -W 5 >/dev/null 2>&1"
+        ]
+      interval: 15s
+      timeout: 10s
+      retries: 5
+      start_period: 10s
+
+  git:
+    image: gitea/gitea:1.24
+    restart: unless-stopped
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "wget --no-verbose --tries=1 --spider http://localhost:3000/ || exit 1"
+        ]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
 

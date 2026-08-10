@@ -4,15 +4,24 @@
     <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>abc6c791-258c-4f35-ad1f-6c4e233813ba</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..\..\..</DockerfileContext>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.10" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.23.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Engin3D.Project.Application\Engin3D.Project.Application.csproj" />
     <ProjectReference Include="..\Engin3D.Project.Composition\Engin3D.Project.Composition.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Engin3D.Project.Composition.Extensions" />
+    <Using Include="Microsoft.AspNetCore.Http" />
+    <Using Include="Microsoft.AspNetCore.Mvc" />
   </ItemGroup>
 
 </Project>

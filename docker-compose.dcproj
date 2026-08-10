@@ -4,11 +4,12 @@
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Linux</DockerTargetOS>
     <ProjectGuid>81dded9d-158b-e303-5f62-77a2896d2a5a</ProjectGuid>
+    <DockerComposeProjectName>Engin3D</DockerComposeProjectName>
   </PropertyGroup>
   <ItemGroup>
-    <None Include=".dev.emv"  >
+    <None Include=".dev.env"  >
       <DependentUpon>.env</DependentUpon>
-    </None>
+    </None>    
     <None Include=".env" />
     <None Include="docker-compose.override.yml">
       <DependentUpon>docker-compose.yml</DependentUpon>

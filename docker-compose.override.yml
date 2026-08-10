@@ -12,6 +12,8 @@ services:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+    networks:
+      - engin3d
   engin3dgateway:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
@@ -25,7 +27,8 @@ services:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
-
+    networks:
+      - engin3d
   engin3didentity:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
@@ -39,7 +42,8 @@ services:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
-
+    networks:
+      - engin3d
   engin3dmetadata:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
@@ -53,7 +57,8 @@ services:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
-
+    networks:
+      - engin3d
   engin3dstorage:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
@@ -67,3 +72,66 @@ services:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+    networks:
+      - engin3d
+  git:
+    environment:
+      USER_UID: "1000"
+      USER_GID: "1000"
+    ports:
+      - "${GIT_HTTP_PORT:-3000}:3000"
+      - "${GIT_SSH_PORT:-2222}:22"
+    volumes:
+      - git-data:/data
+    networks:
+      - engin3d
+  mqtt:
+    ports:
+      - "${MQTT_PORT:-1883}:1883"
+      - "${MQTT_WS_PORT:-9001}:9001"
+    volumes:
+      - mqtt-data:/mosquitto/data
+      - mqtt-log:/mosquitto/log
+      - mqtt-config:/mosquitto/config
+    networks:
+      - engin3d
+  mongodb:
+    ports:
+      - "${MONGODB_PORT:-27017}:27017"
+    volumes:
+      - mongodb-data:/data/db
+      - mongodb-config:/data/configdb
+    networks:
+      - engin3d
+  sqlserver: 
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "${SQLSERVER_SA_PASSWORD}"
+    ports:
+      - "${SQLSERVER_PORT:-1433}:1433"
+    volumes:
+      - sqlserver-data:/var/opt/mssql
+    networks:
+      - engin3d
+
+volumes:
+  sqlserver-data:
+    name: engin3d-sqlserver-data
+  mongodb-data:
+    name: engin3d-mongodb-data
+  mongodb-config:
+    name: engin3d-mongodb-config
+  mqtt-data:
+    name: engin3d-mqtt-data
+  mqtt-log:
+    name: engin3d-mqtt-log
+  mqtt-config:
+    name: engin3d-mqtt-config
+  git-data:
+    name: engin3d-git-data
+
+networks:
+  engin3d:
+    name: engin3d
+    driver: bridge
+

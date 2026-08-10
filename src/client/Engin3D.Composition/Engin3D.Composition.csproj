@@ -26,12 +26,17 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="10.0.90" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <ProjectReference Include="..\Engin3D.Application\Engin3D.Application.csproj" />
 	  <ProjectReference Include="..\Engin3D.Infrastructure\Engin3D.Infrastructure.csproj" />
 	</ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Microsoft.Maui.Controls.Application" Alias="MauiAppProgram" />
+  </ItemGroup>
+
 
 </Project>

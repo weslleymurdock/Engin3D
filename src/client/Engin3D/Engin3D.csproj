@@ -63,4 +63,9 @@
 	  <ProjectReference Include="..\Engin3D.Composition\Engin3D.Composition.csproj" />
 	</ItemGroup>
 
+  <ItemGroup>
+    <Using Include="Microsoft.Maui.Controls.Application" Alias="MauiAppProgram" />
+  </ItemGroup>
+  
+  
 </Project>
