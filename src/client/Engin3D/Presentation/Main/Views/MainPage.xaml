@@ -6,8 +6,8 @@
              xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
              xmlns:input="clr-namespace:InputKit.Shared.Controls;assembly=InputKit.Maui"
              xmlns:validation="clr-namespace:InputKit.Shared.Validations;assembly=InputKit.Maui"
-             x:Class="Engin3D.PresentationLayer.Views.MainPage"
-             xmlns:local="clr-namespace:Engin3D.PresentationLayer.ViewModels"
+             x:Class="Engin3D.Presentation.Views.Main.MainPage"
+             xmlns:local="clr-namespace:Engin3D.Presentation.Main.ViewModels"
              x:Name="page">
     <uranium:UraniumContentPage.BindingContext>
         <local:MainPageViewModel />

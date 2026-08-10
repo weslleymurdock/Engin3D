@@ -58,4 +58,9 @@
 		<PackageReference Include="UraniumUI.Dialogs.Mopups" Version="3.0.0" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <ProjectReference Include="..\Engin3D.Application\Engin3D.Application.csproj" />
+	  <ProjectReference Include="..\Engin3D.Composition\Engin3D.Composition.csproj" />
+	</ItemGroup>
+
 </Project>

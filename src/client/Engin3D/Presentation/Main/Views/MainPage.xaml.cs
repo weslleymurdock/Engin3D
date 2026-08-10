@@ -1,7 +1,7 @@
 ﻿using InputKit.Shared.Controls;
 using UraniumUI.Pages;
 
-namespace Engin3D.PresentationLayer.Views;
+namespace Engin3D.Presentation.Main.Views;
 
 public partial class MainPage : UraniumContentPage
 {

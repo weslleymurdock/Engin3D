@@ -2,7 +2,7 @@
 using System.Windows.Input;
 using UraniumUI;
 
-namespace Engin3D.PresentationLayer.ViewModels;
+namespace Engin3D.Presentation.Main.ViewModels;
 public class MainPageViewModel : BindableObject
 {
     public ObservableCollection<TodoItem> Items { get; protected set; } = new ObservableCollection<TodoItem>();
